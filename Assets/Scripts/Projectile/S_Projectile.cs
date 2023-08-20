@@ -45,12 +45,11 @@ public class S_Projectile : MonoBehaviour
         if (!canCheckCollision)
             return;
 
-        Debug.Log("Projectile collided with: " + collision.gameObject.name);
 
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Projectile destroyed due to enemy collision");
+            
             Destroy(gameObject);
         }
 

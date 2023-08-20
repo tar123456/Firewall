@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class S_EnemyMovement : MonoBehaviour
 {
+    [HideInInspector]
     public Transform target;
     public float movementSpeed = 5.0f;
+
+
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     private void Update()
     {

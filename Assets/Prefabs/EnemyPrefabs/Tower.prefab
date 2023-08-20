@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6093385183298139100}
   m_Layer: 0
   m_Name: Tower
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,3 +331,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 10
+  enemySpawner: {fileID: 3733750651364666333, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
+  EnemyType: Tower

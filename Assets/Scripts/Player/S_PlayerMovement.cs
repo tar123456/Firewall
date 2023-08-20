@@ -79,7 +79,7 @@ public class S_PlayerMovement : MonoBehaviour
         if (!playerHealth.gameOver)
         {
             Instantiate(projectile, spawnLocation.position, spawnLocation.rotation);
-            Debug.Log("Fired");
+           
         }
         
     }

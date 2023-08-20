@@ -250,6 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 3
+  enemySpawner: {fileID: 3733750651364666333, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
+  EnemyType: Mover
 --- !u!4 &7903306457426996718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a777a66e1d3402b45b373bddbaa51291, type: 3}

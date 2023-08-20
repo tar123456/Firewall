@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S_EnemyHealth : MonoBehaviour
+public class S_EnemyHealth : WaveObserver
 {
     public float currentHealth;
+
+    public EnemySpawner enemySpawner;
+
+    public string EnemyType;
     
     void Start()
     {
@@ -15,8 +19,10 @@ public class S_EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            
+           
+            notifyChangeScore(EnemyType);
             Destroy(gameObject);
-            Debug.Log(currentHealth);
         }
     }
 

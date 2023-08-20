@@ -38,7 +38,6 @@ public class S_PlayerHealth : MonoBehaviour
         {
             currentHealth--;
 
-            Debug.Log(currentHealth);
         }
     }
 }
