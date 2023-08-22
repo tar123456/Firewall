@@ -6,22 +6,18 @@ public class S_EnemyHealth : WaveObserver
 {
     public float currentHealth;
 
-    public EnemySpawner enemySpawner;
-
+  
     public string EnemyType;
+
     
-    void Start()
-    {
-       
-    }
 
     private void Update()
     {
+        
         if (currentHealth <= 0)
         {
-            
-           
             notifyChangeScore(EnemyType);
+         
             Destroy(gameObject);
         }
     }
@@ -34,4 +30,8 @@ public class S_EnemyHealth : WaveObserver
 
         }
     }
+
+
+    
+
 }

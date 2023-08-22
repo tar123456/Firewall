@@ -44,14 +44,9 @@ public class S_Projectile : MonoBehaviour
 
         if (!canCheckCollision)
             return;
-
-
-
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            
-            Destroy(gameObject);
-        }
+ 
+        Destroy(gameObject);
+        
 
     }
 }

@@ -41,7 +41,8 @@ public abstract class WaveObserver : MonoBehaviour
         }
         );
     }
-    
+   
+
 }
 
 

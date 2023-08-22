@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : WaveObserver
@@ -31,7 +32,6 @@ public class EnemySpawner : WaveObserver
 
     void Update()
     {
-        Debug.Log(cooldownTimer + " " + numberOfEnemiesSpawned);
         if (!hasSpwned)
         {
             int enemyToSpawn = Random.Range(0,enemyPrefabs.Length);
@@ -48,7 +48,9 @@ public class EnemySpawner : WaveObserver
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        Debug.Log(enemies.Length.ToString());
+
+       
+       
 
         if (hasSpwned) 
         {
@@ -77,6 +79,8 @@ public class EnemySpawner : WaveObserver
     void SpawnEnemy(GameObject enemyPrefab)
     {
 
+        Debug.Log("SpawnEnemy function called");
+
         Vector3 spawnPosition = new Vector3(
         Random.Range(spawnArea.position.x - spawnArea.localScale.x / 2, spawnArea.position.x + spawnArea.localScale.x / 2),
         spawnArea.position.y,
@@ -84,10 +88,11 @@ public class EnemySpawner : WaveObserver
         );
 
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-
-     
-
         newEnemy.transform.parent = spawnArea;
+
+        
+
+        
 
     }
 
