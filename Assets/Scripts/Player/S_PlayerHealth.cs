@@ -12,10 +12,16 @@ public class S_PlayerHealth : MonoBehaviour
 
     public float maxHealth;
     public bool gameOver;
+    public GameObject healthBar;
 
     void Start()
     {
         currentHealth = maxHealth;
+        
+        healthBar.GetComponent<HeartHealth>().maxHealth = (int)maxHealth;
+        healthBar.GetComponent<HeartHealth>().currentHealth = healthBar.GetComponent<HeartHealth>().maxHealth;
+        Debug.Log(currentHealth);
+        healthBar.GetComponent<HeartHealth>().UpdateHealth();
         gameOver = false;
     }
 
@@ -26,7 +32,6 @@ public class S_PlayerHealth : MonoBehaviour
         {
             gameOverObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
-            Debug.Log("GameOver");
             gameOver = true;
         }
         
@@ -37,7 +42,8 @@ public class S_PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("EnemyProjectile"))
         {
             currentHealth--;
-
+            healthBar.GetComponent<HeartHealth>().currentHealth = (int)currentHealth+1;
+            healthBar.GetComponent<HeartHealth>().ModifyHealth(-1);
         }
     }
 }

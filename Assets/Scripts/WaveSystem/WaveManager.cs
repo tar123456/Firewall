@@ -92,7 +92,7 @@ public class WaveManager : MonoBehaviour,IWaveObserver
 
     void IWaveObserver.ChangeScore(string EnemyType)
     {
-        Debug.Log("Called");
+        
         int type = enemyTypes[EnemyType];
         switch (type)
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,7 +11,10 @@ public class EnemySpawner : WaveObserver
 
 
     public Transform spawnArea;
-    float cooldownTimer;
+    
+    [HideInInspector]
+    public float cooldownTimer;
+
     int numberOfEnemiesSpawned;
     bool hasSpwned;
 
@@ -19,6 +23,8 @@ public class EnemySpawner : WaveObserver
 
     [HideInInspector]
     public GameObject[] enemies;
+
+    public GameObject coolDownTimer;
 
     private void Start()
     {
@@ -49,14 +55,15 @@ public class EnemySpawner : WaveObserver
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
 
-       
+       coolDownTimer.GetComponent<TextMeshProUGUI>().text = ((int)cooldownTimer).ToString();
        
 
         if (hasSpwned) 
         {
 
             if (enemies.Length <= 0)
-            { 
+            {
+                coolDownTimer.SetActive(true);
                 cooldownTimer -= Time.deltaTime; 
             }
    
@@ -66,6 +73,7 @@ public class EnemySpawner : WaveObserver
             {
                 hasSpwned = false;
                 cooldownTimer = 10f;
+                coolDownTimer.SetActive(false);
                 numberOfEnemiesSpawned = 0;
                 notifyChangeWave();
                 notifyChangeEnemyCount();
@@ -79,7 +87,7 @@ public class EnemySpawner : WaveObserver
     void SpawnEnemy(GameObject enemyPrefab)
     {
 
-        Debug.Log("SpawnEnemy function called");
+        
 
         Vector3 spawnPosition = new Vector3(
         Random.Range(spawnArea.position.x - spawnArea.localScale.x / 2, spawnArea.position.x + spawnArea.localScale.x / 2),
