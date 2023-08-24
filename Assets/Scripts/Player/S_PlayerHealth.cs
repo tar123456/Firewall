@@ -30,9 +30,11 @@ public class S_PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+           
             gameOverObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             gameOver = true;
+            
         }
         
     }
@@ -44,6 +46,15 @@ public class S_PlayerHealth : MonoBehaviour
             currentHealth--;
             healthBar.GetComponent<HeartHealth>().currentHealth = (int)currentHealth+1;
             healthBar.GetComponent<HeartHealth>().ModifyHealth(-1);
+            if (currentHealth > 0)
+            {
+                AudioManager.instance.playSound("Player hurt");
+            }
+            else if (currentHealth == 0)
+            {
+                AudioManager.instance.playSound("Game Over");
+            }
+            
         }
     }
 }

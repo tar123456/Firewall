@@ -106,7 +106,16 @@ public class WaveManager : MonoBehaviour,IWaveObserver
                 score += 30;
                 break;
         };
-        
+        if (score > HighScore.instance.getHighScore())
+        {
+            HighScore.instance.setHighScore(score);
+            Debug.Log("HighScore Set");
+            return;
+        }
+        else
+        {
+            return;
+        }
     }
    
    

@@ -818,6 +818,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 791524690}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &260997101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 260997103}
+  - component: {fileID: 260997102}
+  m_Layer: 0
+  m_Name: HighScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &260997102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260997101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e107c6626cf93e84bab1bb2a200a7aa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &260997103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260997101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.7486076, y: -93.59311, z: 160.00522}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &291097673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2168,81 @@ MonoBehaviour:
   maxHealth: 3
   gameOver: 0
   healthBar: {fileID: 170542851}
+--- !u!1 &853571310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853571312}
+  - component: {fileID: 853571311}
+  m_Layer: 0
+  m_Name: AudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &853571311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853571310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb7cd84f48bef44a8ba4d5e06b13e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Main Music
+    clip: {fileID: 8300000, guid: 7c611f3799111de46bb8f4a7f98bcf01, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 1
+    soundSource: {fileID: 0}
+  - name: Enemy Defeat
+    clip: {fileID: 8300000, guid: 574d82e1528485c4092f0a64730d4552, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Player Shoot
+    clip: {fileID: 8300000, guid: 2a55f9949b5c567438906cb43086863b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Player hurt
+    clip: {fileID: 8300000, guid: cb73fbeb30918ea4b92987a135cbfe73, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Game Over
+    clip: {fileID: 8300000, guid: ed58d7117cd6a54468efe46feefee9af, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+--- !u!4 &853571312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853571310}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 830.2057, y: 286.28778, z: -82.12765}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &866345594
 GameObject:
   m_ObjectHideFlags: 0
@@ -3161,12 +3280,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 759280503}
     - target: {fileID: 5358767299734166599, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358767299734166599, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358767299734166599, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358767299734166599, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.3078294
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 5358767299734166599, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.642411
+      value: 3.22
       objectReference: {fileID: 0}
     - target: {fileID: 5358767299734166599, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3220,3 +3351,5 @@ SceneRoots:
   - {fileID: 525944278}
   - {fileID: 1956774091}
   - {fileID: 1963929230963938293}
+  - {fileID: 260997103}
+  - {fileID: 853571312}

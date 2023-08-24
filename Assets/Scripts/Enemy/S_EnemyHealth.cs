@@ -17,7 +17,8 @@ public class S_EnemyHealth : WaveObserver
         if (currentHealth <= 0)
         {
             notifyChangeScore(EnemyType);
-         
+            Debug.Log("Notified for score");
+            AudioManager.instance.playSound("Enemy Defeat");
             Destroy(gameObject);
         }
     }

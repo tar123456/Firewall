@@ -79,6 +79,7 @@ public class S_PlayerMovement : MonoBehaviour
         if (!playerHealth.gameOver)
         {
             Instantiate(projectile, spawnLocation.position, spawnLocation.rotation);
+            AudioManager.instance.playSound("Player Shoot");
            
         }
         
