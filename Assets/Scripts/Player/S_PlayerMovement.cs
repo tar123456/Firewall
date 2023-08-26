@@ -15,7 +15,7 @@ public class S_PlayerMovement : MonoBehaviour
     
     public Transform spawnLocation;
     S_PlayerHealth playerHealth;
-
+   
     Vector2 moveDirection = Vector2.zero;
     Vector2 turn = Vector2.zero;
 
@@ -48,7 +48,7 @@ public class S_PlayerMovement : MonoBehaviour
         if (!playerHealth.gameOver)
         {
             moveDirection = action.ReadValue<Vector2>();
-            turn = Mouse.current.delta.ReadValue();
+            turn = rotate.ReadValue<Vector2>()*new Vector2(2.0f,0f);
             transform.Rotate(Vector3.forward * turn.x);
         }
 
@@ -57,7 +57,7 @@ public class S_PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>(); 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate()

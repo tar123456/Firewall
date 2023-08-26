@@ -184,7 +184,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 48
   m_CollisionDetection: 0
 --- !u!65 &1717030870628337222
 BoxCollider:
@@ -222,7 +222,7 @@ MonoBehaviour:
   spawnpoints:
   - {fileID: 391087352135585446}
   Projectile: {fileID: 2825009020257841897, guid: d37a64b21e3938641a931d135560b222, type: 3}
-  spawnSpeed: 0.5
+  spawnSpeed: 1
 --- !u!114 &1030089017729003977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  movementSpeed: 1
+  movementSpeed: 0.75
 --- !u!114 &8486137935687473789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21732aa76f5d70488659cf355b107f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
+  currentHealth: 2
   EnemyType: Mover
 --- !u!4 &7903306457426996718 stripped
 Transform:

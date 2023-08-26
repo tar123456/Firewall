@@ -290,7 +290,7 @@ MonoBehaviour:
   - {fileID: 789154615597498710}
   - {fileID: 3429008785415393463}
   Projectile: {fileID: 2825009020257841897, guid: d37a64b21e3938641a931d135560b222, type: 3}
-  spawnSpeed: 2
+  spawnSpeed: 1.5
 --- !u!54 &2444949661996055632
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 48
   m_CollisionDetection: 1
 --- !u!114 &8141034517157985445
 MonoBehaviour:
@@ -330,6 +330,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21732aa76f5d70488659cf355b107f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
-  enemySpawner: {fileID: 3733750651364666333, guid: 2be07c6c61ca9914ba3b30f9fc73bd55, type: 3}
+  currentHealth: 5
   EnemyType: Tower

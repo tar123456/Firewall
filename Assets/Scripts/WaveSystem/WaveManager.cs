@@ -35,7 +35,7 @@ public class WaveManager : MonoBehaviour,IWaveObserver
     private void Start()
     {
         waveNo = 1;
-        initialEnemyNumber = 5;
+        initialEnemyNumber = 3;
         enemyNumber = initialEnemyNumber;
         score = 0;
         enemiesToRemove = new List<GameObject>();
@@ -97,13 +97,13 @@ public class WaveManager : MonoBehaviour,IWaveObserver
         switch (type)
         {
             case 1:
-                score += 10;
+                score += 20;
                 break;
             case 2:
-                score += 20; 
+                score += 30; 
                 break;
             case 3:
-                score += 30;
+                score += 60;
                 break;
         };
         if (score > HighScore.instance.getHighScore())
