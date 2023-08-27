@@ -10,7 +10,7 @@ public class S_EnemyProijectile : MonoBehaviour
     void Start()
     {
         timer = 0;
-        movementSpeed = 5;
+        movementSpeed = 7.5f;
     }
 
     // Update is called once per frame

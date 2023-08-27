@@ -14,7 +14,7 @@ public class S_Projectile : MonoBehaviour
     void Start()
     {
         timer = 0;
-        movementSpeed = 5;
+        movementSpeed = 10;
 
 
         StartCoroutine(EnableCollisionCheck());

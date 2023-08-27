@@ -239,7 +239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bbadb61154ee68244b381444fa6794b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
   - {fileID: 6659738638042192602}
   - {fileID: 2548830726517290658}
   Projectile: {fileID: 2825009020257841897, guid: d37a64b21e3938641a931d135560b222, type: 3}
-  spawnSpeed: 0.5
+  spawnSpeed: 0.35
 --- !u!114 &8963621002691062052
 MonoBehaviour:
   m_ObjectHideFlags: 0

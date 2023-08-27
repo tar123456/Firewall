@@ -18,6 +18,7 @@ public class S_PlayerMovement : MonoBehaviour
    
     Vector2 moveDirection = Vector2.zero;
     Vector2 turn = Vector2.zero;
+    float bounceForce;
 
 
     public void OnEnable()
@@ -33,6 +34,7 @@ public class S_PlayerMovement : MonoBehaviour
     private void Start()
     {
         playerHealth = GetComponent<S_PlayerHealth>();
+        bounceForce = 2.0f;
     }
 
     public void OnDisable()
@@ -83,5 +85,20 @@ public class S_PlayerMovement : MonoBehaviour
            
         }
         
+    }
+
+    private void BounceBack(Vector3 collisionPoint)
+    {
+        Vector3 bounceDirection = transform.position - collisionPoint;
+        rigidbody.AddForce(bounceDirection.normalized * bounceForce, ForceMode.Impulse);
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            BounceBack(collision.contacts[0].point);
+        }
     }
 }
