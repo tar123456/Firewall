@@ -15,6 +15,7 @@ public class EnemySpawner : WaveObserver
     private WaveManager waveManager;
     private GameObject[] enemies;
     public GameObject coolDownTimer;
+    Vector3 spawnPosition;
 
     private void Start()
     {
@@ -72,13 +73,46 @@ public class EnemySpawner : WaveObserver
 
     void SpawnEnemy(GameObject enemyPrefab)
     {
-        Vector3 spawnPosition = new Vector3(
-            Random.Range(spawnArea.position.x - spawnArea.localScale.x / 2, spawnArea.position.x + spawnArea.localScale.x / 2),
-            spawnArea.position.y,
-            Random.Range(spawnArea.position.z - spawnArea.localScale.z / 2, spawnArea.position.z + spawnArea.localScale.z / 2)
-        );
+        
+        bool isValidSpawnPosition = false;
+        int maxAttempts = 10; // To avoid infinite loops if no valid spawn position is found.
 
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        newEnemy.transform.parent = spawnArea;
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            // Generate a random spawn position within the spawn area.
+            spawnPosition = new Vector3(
+                Random.Range(spawnArea.position.x - spawnArea.localScale.x / 2, spawnArea.position.x + spawnArea.localScale.x / 2),
+                spawnArea.position.y,
+                Random.Range(spawnArea.position.z - spawnArea.localScale.z / 2, spawnArea.position.z + spawnArea.localScale.z / 2)
+            );
+
+            // Check if the spawn position is clear of other enemies and the player.
+            Collider[] colliders = Physics.OverlapSphere(spawnPosition, 1.0f); // Adjust the radius as needed.
+
+            bool isClear = true;
+
+            foreach (Collider col in colliders)
+            {
+                if (col.CompareTag("Enemy") || col.CompareTag("Player"))
+                {
+                    isClear = false;
+                    break;
+                }
+            }
+
+            if (isClear)
+            {
+                isValidSpawnPosition = true;
+                break; 
+            }
+        }
+
+        if (isValidSpawnPosition)
+        {
+            GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            newEnemy.transform.parent = spawnArea;
+        }
+        
     }
+
 }
