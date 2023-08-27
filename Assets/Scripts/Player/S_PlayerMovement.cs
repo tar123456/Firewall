@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.PlayerLoop;
 
 public class S_PlayerMovement : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class S_PlayerMovement : MonoBehaviour
     Vector2 moveDirection = Vector2.zero;
     Vector2 turn = Vector2.zero;
     float bounceForce;
+    private bool isFiring;
+    private float lastFireTime;
+    public float timeBetweenShots = 0.2f;
 
 
     public void OnEnable()
@@ -27,8 +32,8 @@ public class S_PlayerMovement : MonoBehaviour
         fire.Enable();
         rotate.Enable();
 
-       
-        fire.performed+= Fire;
+        fire.started += StartFiring;
+        fire.canceled += StopFiring;
     }
 
     private void Start()
@@ -42,6 +47,9 @@ public class S_PlayerMovement : MonoBehaviour
         action.Disable();
         fire.Disable();
         rotate.Disable();
+
+        fire.started -= StartFiring;
+        fire.canceled -= StopFiring;
     }
 
     private void Update()
@@ -52,14 +60,24 @@ public class S_PlayerMovement : MonoBehaviour
             moveDirection = action.ReadValue<Vector2>();
             turn = rotate.ReadValue<Vector2>()*new Vector2(2.0f,0f);
             transform.Rotate(Vector3.forward * turn.x);
+            if (isFiring)
+            {
+                
+                if (Time.time - lastFireTime >= timeBetweenShots)
+                {
+                    Fire(); // Fire a shot
+                    lastFireTime = Time.time; // Update the last fire time
+                }
+            }
         }
 
     }
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>(); 
+        rigidbody = GetComponent<Rigidbody>();
         //Cursor.lockState = CursorLockMode.Locked;
+     
     }
 
     private void FixedUpdate()
@@ -75,7 +93,10 @@ public class S_PlayerMovement : MonoBehaviour
     
     }
 
-    private void Fire(InputAction.CallbackContext context)
+
+    
+
+    private void Fire()
     {
 
         if (!playerHealth.gameOver)
@@ -100,5 +121,17 @@ public class S_PlayerMovement : MonoBehaviour
         {
             BounceBack(collision.contacts[0].point);
         }
+    }
+
+    private void StartFiring(InputAction.CallbackContext context)
+    {
+        isFiring = true;
+   
+    }
+
+    private void StopFiring(InputAction.CallbackContext context)
+    {
+        isFiring = false;
+      
     }
 }
