@@ -400,6 +400,8 @@ MonoBehaviour:
     m_Flags: 0
   projectile: {fileID: 0}
   spawnLocation: {fileID: 0}
+  timeBetweenShots: 0.4
+  raycastOrigin: {fileID: 0}
 --- !u!4 &7542148004195131213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 313a6d900654f19449533ddb9f4e6f4b, type: 3}

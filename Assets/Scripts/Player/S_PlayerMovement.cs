@@ -6,25 +6,26 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
+
 public class S_PlayerMovement : MonoBehaviour
 {
+    #region Variables
     public Rigidbody rigidbody;
     public float movespeed;
     public InputAction action;
     public InputAction fire;
     public InputAction rotate;
     public GameObject projectile;
-    
     public Transform spawnLocation;
     S_PlayerHealth playerHealth;
-   
     Vector2 moveDirection = Vector2.zero;
     Vector2 turn = Vector2.zero;
     float bounceForce;
     private bool isFiring;
     private float lastFireTime;
-    public float timeBetweenShots = 0.2f;
-
+    public float timeBetweenShots = 0.4f;
+    public Transform raycastOrigin;
+    #endregion
 
     public void OnEnable()
     {
@@ -65,8 +66,8 @@ public class S_PlayerMovement : MonoBehaviour
                 
                 if (Time.time - lastFireTime >= timeBetweenShots)
                 {
-                    Fire(); // Fire a shot
-                    lastFireTime = Time.time; // Update the last fire time
+                    Fire(); 
+                    lastFireTime = Time.time;
                 }
             }
         }
@@ -84,18 +85,26 @@ public class S_PlayerMovement : MonoBehaviour
     {
         if (!playerHealth.gameOver)
         {
-
             Vector3 velocity = new Vector3(moveDirection.y, moveDirection.x, 0) * movespeed;
-
-            // Apply the velocity to the Rigidbody in local space
             rigidbody.velocity = transform.TransformDirection(velocity);
+            RaycastHit hit;
+            Vector3 raycastDirection = transform.TransformDirection(Vector3.right);
+            float raycastLength = 40.0f; 
+            Debug.DrawRay(raycastOrigin.position, raycastDirection * raycastLength, Color.red);
+            if (Physics.Raycast(raycastOrigin.position, raycastDirection, out hit, raycastLength) && PlayerPrefs.HasKey("Auto-Shoot") && PlayerPrefs.GetInt("Auto-Shoot") == 1)
+            {
+                if (hit.collider.gameObject.CompareTag("Enemy")|| hit.collider.gameObject.CompareTag("EnemyProjectile"))
+                {
+                    if (Time.time - lastFireTime >= timeBetweenShots)
+                    {
+                        Fire();
+                        lastFireTime = Time.time;
+                    }
+                }
+            }
         }
-    
     }
-
-
     
-
     private void Fire()
     {
 
@@ -128,10 +137,13 @@ public class S_PlayerMovement : MonoBehaviour
         isFiring = true;
    
     }
-
+  
     private void StopFiring(InputAction.CallbackContext context)
     {
         isFiring = false;
       
     }
+
+   
+
 }

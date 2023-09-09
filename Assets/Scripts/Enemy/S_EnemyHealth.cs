@@ -8,8 +8,12 @@ public class S_EnemyHealth : WaveObserver
 
   
     public string EnemyType;
+    public GameObject PowerUp;
+    public float probablity;
+    float randomValue;
+    public GameObject destroy;
 
-    
+
 
     private void Update()
     {
@@ -19,6 +23,8 @@ public class S_EnemyHealth : WaveObserver
             notifyChangeScore(EnemyType);
             Debug.Log("Notified for score");
             AudioManager.instance.playSound("Enemy Defeat");
+            SpawnObject();
+            SpawnDestroy();
             Destroy(gameObject);
         }
     }
@@ -30,6 +36,22 @@ public class S_EnemyHealth : WaveObserver
             currentHealth--;
 
         }
+    }
+
+
+    private void SpawnObject()
+    {
+         randomValue = Random.value;
+
+        if (randomValue < probablity)
+        {
+            Instantiate(PowerUp, transform.position, Quaternion.identity);
+        }
+        
+    }
+    private void SpawnDestroy()
+    {
+        Instantiate(destroy, transform.position, Quaternion.identity);
     }
 
 

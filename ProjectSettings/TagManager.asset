@@ -8,6 +8,7 @@ TagManager:
   - PlayerProjectile
   - EnemyProjectile
   - WaveManager
+  - HealthBar
   layers:
   - Default
   - TransparentFX

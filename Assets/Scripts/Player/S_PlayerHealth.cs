@@ -4,39 +4,44 @@ using UnityEngine;
 
 public class S_PlayerHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    float currentHealth= 0;
+    [HideInInspector]
+    public float currentHealth = 0;
 
     public GameObject gameOverObject;
-
+    public GameObject ControlObject;
     public float maxHealth;
     public bool gameOver;
     public GameObject healthBar;
 
+    private Material originalMaterial;
+    private Renderer renderer;
+    private bool isTakingDamage = false;
+    private float damageDuration = 0.1f;
+    private Color originalColor;
+
     void Start()
     {
         currentHealth = maxHealth;
-        
+
         healthBar.GetComponent<HeartHealth>().maxHealth = (int)maxHealth;
         healthBar.GetComponent<HeartHealth>().currentHealth = healthBar.GetComponent<HeartHealth>().maxHealth;
-        Debug.Log(currentHealth);
         healthBar.GetComponent<HeartHealth>().UpdateHealth();
         gameOver = false;
+
+        renderer = GetComponent<Renderer>();
+        originalMaterial = renderer.material;
+        originalColor = originalMaterial.color; // Store the original color
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (currentHealth <= 0)
         {
-           
             gameOverObject.SetActive(true);
+            ControlObject.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             gameOver = true;
-            
         }
-        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,8 +49,18 @@ public class S_PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("EnemyProjectile"))
         {
             currentHealth--;
-            healthBar.GetComponent<HeartHealth>().currentHealth = (int)currentHealth+1;
+            healthBar.GetComponent<HeartHealth>().currentHealth = (int)currentHealth + 1;
             healthBar.GetComponent<HeartHealth>().ModifyHealth(-1);
+
+            if (!isTakingDamage)
+            {
+                // Change the material color to red temporarily
+                renderer.material.color = Color.red;
+
+                // Start a coroutine to return the color to the original after a brief duration
+                StartCoroutine(ReturnToOriginalColor());
+            }
+
             if (currentHealth > 0)
             {
                 AudioManager.instance.playSound("Player hurt");
@@ -54,7 +69,19 @@ public class S_PlayerHealth : MonoBehaviour
             {
                 AudioManager.instance.playSound("Game Over");
             }
-            
         }
+    }
+
+    private IEnumerator ReturnToOriginalColor()
+    {
+        isTakingDamage = true;
+
+        // Wait for the specified duration
+        yield return new WaitForSeconds(damageDuration);
+
+        // Restore the original material color
+        renderer.material.color = originalColor;
+
+        isTakingDamage = false;
     }
 }

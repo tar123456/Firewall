@@ -8,6 +8,7 @@ public class EnemySpawner : WaveObserver
 {
     public GameObject[] enemyPrefabs;
     public Transform spawnArea;
+    [HideInInspector]
     public float cooldownTimer;
 
     private int numberOfEnemiesSpawned;

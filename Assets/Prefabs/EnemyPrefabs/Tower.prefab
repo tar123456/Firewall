@@ -294,7 +294,7 @@ MonoBehaviour:
   - {fileID: 789154615597498710}
   - {fileID: 3429008785415393463}
   Projectile: {fileID: 2825009020257841897, guid: d37a64b21e3938641a931d135560b222, type: 3}
-  spawnSpeed: 1.5
+  spawnSpeed: 1
 --- !u!54 &2444949661996055632
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -336,3 +336,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 5
   EnemyType: Tower
+  PowerUp: {fileID: 9198758904242659110, guid: 4d97ef8a3c6fc6d4c9005288acfcc89d, type: 3}
+  probablity: 0.15
+  destroy: {fileID: 3942487892415099034, guid: 1b1045ae9319f544db6a5609f111ae79, type: 3}

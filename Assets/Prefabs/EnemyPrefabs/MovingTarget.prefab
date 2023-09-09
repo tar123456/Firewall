@@ -226,7 +226,7 @@ MonoBehaviour:
   spawnpoints:
   - {fileID: 391087352135585446}
   Projectile: {fileID: 2825009020257841897, guid: d37a64b21e3938641a931d135560b222, type: 3}
-  spawnSpeed: 1
+  spawnSpeed: 0.25
 --- !u!114 &1030089017729003977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  movementSpeed: 0.75
+  movementSpeed: 1
 --- !u!114 &8486137935687473789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 2
   EnemyType: Mover
+  PowerUp: {fileID: 9198758904242659110, guid: 4d97ef8a3c6fc6d4c9005288acfcc89d, type: 3}
+  probablity: 0.5
+  destroy: {fileID: 3942487892415099034, guid: 1b1045ae9319f544db6a5609f111ae79, type: 3}
 --- !u!4 &7903306457426996718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a777a66e1d3402b45b373bddbaa51291, type: 3}
