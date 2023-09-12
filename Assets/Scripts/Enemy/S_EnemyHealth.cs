@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class S_EnemyHealth : WaveObserver
 {
@@ -20,8 +21,12 @@ public class S_EnemyHealth : WaveObserver
         
         if (currentHealth <= 0)
         {
-            notifyChangeScore(EnemyType);
-            Debug.Log("Notified for score");
+            if (SceneManager.GetActiveScene().name != "TutorialScene")
+            {
+                notifyChangeScore(EnemyType);
+                Debug.Log("Notified for score");
+            }
+
             AudioManager.instance.playSound("Enemy Defeat");
             SpawnObject();
             SpawnDestroy();
@@ -43,7 +48,7 @@ public class S_EnemyHealth : WaveObserver
     {
          randomValue = Random.value;
 
-        if (randomValue < probablity)
+        if (randomValue < probablity && SceneManager.GetActiveScene().name != "TutorialScene")
         {
             Instantiate(PowerUp, transform.position, Quaternion.identity);
         }

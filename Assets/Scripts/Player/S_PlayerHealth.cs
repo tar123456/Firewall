@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class S_PlayerHealth : MonoBehaviour
 {
@@ -48,20 +49,22 @@ public class S_PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyProjectile"))
         {
-            currentHealth--;
-            healthBar.GetComponent<HeartHealth>().currentHealth = (int)currentHealth + 1;
-            healthBar.GetComponent<HeartHealth>().ModifyHealth(-1);
-
-            if (!isTakingDamage)
+            if (SceneManager.GetActiveScene().name != "TutorialScene")
             {
-                // Change the material color to red temporarily
-                renderer.material.color = Color.red;
+                currentHealth--;
+                healthBar.GetComponent<HeartHealth>().currentHealth = (int)currentHealth + 1;
+                healthBar.GetComponent<HeartHealth>().ModifyHealth(-1);
 
-                // Start a coroutine to return the color to the original after a brief duration
-                StartCoroutine(ReturnToOriginalColor());
+                if (!isTakingDamage)
+                {
+                    // Change the material color to red temporarily
+                    renderer.material.color = Color.red;
+
+                    // Start a coroutine to return the color to the original after a brief duration
+                    StartCoroutine(ReturnToOriginalColor());
+                }
             }
-
-            if (currentHealth > 0)
+            if (currentHealth > 0 ||SceneManager.GetActiveScene().name == "TutorialScene")
             {
                 AudioManager.instance.playSound("Player hurt");
             }

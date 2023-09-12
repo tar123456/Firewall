@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1512198356580995033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7547762616627075297}
+  - component: {fileID: 1840584036962108142}
+  m_Layer: 0
+  m_Name: AudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7547762616627075297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512198356580995033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 830.2057, y: 286.28778, z: -82.12765}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1840584036962108142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512198356580995033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb7cd84f48bef44a8ba4d5e06b13e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Main Music
+    clip: {fileID: 8300000, guid: 7c611f3799111de46bb8f4a7f98bcf01, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 1
+    soundSource: {fileID: 0}
+  - name: Enemy Defeat
+    clip: {fileID: 8300000, guid: 574d82e1528485c4092f0a64730d4552, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Player Shoot
+    clip: {fileID: 8300000, guid: 2a55f9949b5c567438906cb43086863b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Player hurt
+    clip: {fileID: 8300000, guid: cb73fbeb30918ea4b92987a135cbfe73, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Game Over
+    clip: {fileID: 8300000, guid: ed58d7117cd6a54468efe46feefee9af, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}
+  - name: Power Up
+    clip: {fileID: 8300000, guid: 8bc36a6c85099244f908b80f490b4f44, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    soundSource: {fileID: 0}

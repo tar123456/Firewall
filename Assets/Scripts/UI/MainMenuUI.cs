@@ -28,4 +28,14 @@ public class MainMenuUI : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void loadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void loadTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
 }

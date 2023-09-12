@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
-
+using UnityEngine.SceneManagement;
 
 public class S_PlayerMovement : MonoBehaviour
 {
@@ -56,7 +56,7 @@ public class S_PlayerMovement : MonoBehaviour
     private void Update()
     {
 
-        if (!playerHealth.gameOver)
+        if (!playerHealth.gameOver || SceneManager.GetActiveScene().name == "TutorialScene")
         {
             moveDirection = action.ReadValue<Vector2>();
             turn = rotate.ReadValue<Vector2>()*new Vector2(2.0f,0f);
@@ -83,7 +83,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!playerHealth.gameOver)
+        if (!playerHealth.gameOver || SceneManager.GetActiveScene().name =="TutorialScene")
         {
             Vector3 velocity = new Vector3(moveDirection.y, moveDirection.x, 0) * movespeed;
             rigidbody.velocity = transform.TransformDirection(velocity);
@@ -108,7 +108,7 @@ public class S_PlayerMovement : MonoBehaviour
     private void Fire()
     {
 
-        if (!playerHealth.gameOver)
+        if (!playerHealth.gameOver|| SceneManager.GetActiveScene().name == "TutorialScene")
         {
             Instantiate(projectile, spawnLocation.position, spawnLocation.rotation);
             AudioManager.instance.playSound("Player Shoot");
